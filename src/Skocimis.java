@@ -1,28 +1,39 @@
 import java.util.Scanner;
 
 public class Skocimis {
-
+	static int n[] = new int[3];
+	static int Ans;
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		int num1, num2, num3;
-		Scanner scan = new Scanner(System.in);
-		do {
-			System.out.print("Enter 3 Integer (0 < Number1 < Number2 < Number3 < 100) : ");
-			num1 = scan.nextInt();
-			num2 = scan.nextInt();
-			num3 = scan.nextInt();
-			if (num1 <= 0 || num1 >= 100) {System.out.println("Input Integer : Please enter again!!!");}
-			else if (num2 <= 0 || num2 >= 100) {System.out.println("Input Integer : Please enter again!!!");} 
-			else if (num3 <= 0 || num3 >= 100) {System.out.println("Input Integer : Please enter again!!!");} 
-			else if (num2 <= num1) {System.out.println("Number2 More Than Number1 : Please enter again!!!");}
-			else if (num3 <= num2) {System.out.println("Number3 More Than Number2 : Please enter again!!!");}
-			
-		} while (num1 <= 0 || num1 >= 100 || num2 <= 0 || num2 >= 100 || num3 <= 0 || num3 >= 100 || num3 < num1
-				|| num3 < num2 || num2 < num1 || num1 > num2 || num1 > num3);
-		System.out.println("!!!!!------- Show Output --------!!!!!");
-		System.out.println(" " + ((num3 - num2) - 1) + " Time.");
-
+		Input();
+		Cal();
+		Display();
 	}
-
+	
+	public static void Input() {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Input 3 integer (0 < A < B < C < 100): ");
+		for (int i = 0; i < n.length; i++) {
+		n[i] = scan.nextInt();
+		}
+	}
+	
+	public static void Cal() {
+		if (n[0] <= 0 || n[0] >= 100) {
+			System.out.println("Invalid Input. Please enter again!!!");
+		} else if (n[1] <= 0 || n[1] >= 100) {
+			System.out.println("Invalid Input. Please enter again!!!");
+		} else if (n[2] <= 0 || n[2] >= 100) {
+			System.out.println("Invalid Input. Please enter again!!!");
+		} else if (n[1] <= n[0]) {
+			System.out.println("B must more than A. Please enter again!!!");
+		} else if (n[2] <= n[1]) {
+			System.out.println("C must more than B. Please enter again!!!");
+		}
+		Ans = ((n[2] - n[1]) - 1);
+	}
+	
+	public static void Display() {
+		System.out.println("------- Show Output -------- ");
+		System.out.println(" Most played : " + Ans + " time.");
+	}
 }

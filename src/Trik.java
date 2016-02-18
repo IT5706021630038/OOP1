@@ -1,45 +1,37 @@
-import java.lang.*;
 import java.util.Scanner;
-
 public class Trik {
-
+	static int p = 1;
+	static char abc[] = new char[100];
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		String text;
-		int A = 1, B = 0, C = 0;
-		int glass;
+		Input();
+		Cal();
+		Display();
+	}
+	
+	public static void Input(){
 		Scanner scan = new Scanner(System.in);
-		do {
-			System.out.print("Enter Charlecter (A,B or C) : ");
-			text = scan.nextLine();
-			if (text.length() > 50) {
-				System.out.println("Input Charecter More 50 : Please Enter Again!!!");
+		System.out.print("Input Data : ");
+		abc=scan.next().toCharArray();
+	}
+	
+	public static void Cal(){
+    	for (int i = 0 ; i < abc.length ; i++) {
+			if (abc[i]=='A') {
+				if (p==1) { p=2; }
+				else if (p==2) { p=1;}
 			}
-
-		} while (text.length() > 50);
-		for (int i = 0; i < text.length(); i++) {
-			if (text.charAt(i) == 'A' || text.charAt(i) == 'a') {
-				glass = A;
-				A = B;
-				B = glass;
-			} else if (text.charAt(i) == 'B' || text.charAt(i) == 'b') {
-				glass = B;
-				B = C;
-				C = glass;
-			} else if (text.charAt(i) == 'C' || text.charAt(i) == 'c') {
-				glass = A;
-				A = C;
-				C = glass;
+			else if (abc[i]=='B') {
+				if (p==2) { p=3; }
+				else if (p==3) { p=2;}
 			}
-		}
-		if (A == 1) {
-			System.out.println("Ball In Glass = 1");
-		} else if (B == 1) {
-			System.out.println("Ball In Glass = 2");
-		} else if (C == 1) {
-			System.out.println("Ball In Glass = 3");
-		}
+			else if (abc[i]=='C') {
+				if (p==3) { p=1; }
+				else if (p==1) { p=3;}
+			}
+		}	
 	}
 
+    public static void Display(){
+    	System.out.print("Show Data : " + p);
+    }
 }
